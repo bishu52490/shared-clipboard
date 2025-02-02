@@ -3,6 +3,11 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 import { v4 as uuidv4 } from "uuid";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const server = createServer(app);
@@ -11,7 +16,7 @@ const io = new Server(server, {
 });
 
 app.use(cors());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 const clipboards = {};
 const clipboardTimers = {};
@@ -50,6 +55,11 @@ io.on("connection", (socket) => {
     socket.on("disconnect", () => {
         console.log("A user disconnected");
     });
+});
+
+// ✅ Serve the frontend (Fix for "Cannot GET /")
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Vercel requires exporting the handler
