@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shared Clipboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Shared Clipboard</h1>
+        
+        <div class="clipboard">
+            <textarea id="clipboardContent" placeholder="Write or paste something..."></textarea>
+            <button id="createClipboard">Create & Share</button>
+            <p id="clipboardCode"></p>
+            <button id="copyClipboardCode" style="display: none;">📋 Copy Code</button>
+        </div>
+
+        <div class="joinClipboard">
+            <input type="text" id="clipboardCodeInput" placeholder="Enter Clipboard Code">
+            <button id="joinClipboard">Open Clipboard</button>
+        </div>
+    </div>
+
+    <script type="module" src="/socket.io/socket.io.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
