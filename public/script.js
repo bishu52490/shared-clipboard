@@ -1,4 +1,4 @@
-const socket = io("https://shared-clipboard-chatgpt.vercel.app");
+const socket = io("https://shared-clipboard-chatgpt.onrender.com");
 
 document.getElementById("createClipboard").addEventListener("click", () => {
     const content = document.getElementById("clipboardContent").value;
