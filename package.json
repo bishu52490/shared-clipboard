@@ -3,11 +3,11 @@
   "description": "Simple api sample in Node",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
+  "main": "script.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "nodemon script.js",
+    "start": "node script.js"
   },
   "author": "Google LLC",
   "license": "Apache-2.0",
