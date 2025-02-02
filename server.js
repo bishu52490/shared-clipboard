@@ -16,7 +16,7 @@ const io = new Server(server, {
 });
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"))); // Serve frontend
 
 const clipboards = {};
 const clipboardTimers = {};
@@ -57,10 +57,12 @@ io.on("connection", (socket) => {
     });
 });
 
-// ✅ Serve the frontend (Fix for "Cannot GET /")
+// ✅ Serve the frontend when accessing "/"
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Vercel requires exporting the handler
-export default app;
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
